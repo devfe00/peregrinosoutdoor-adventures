@@ -1,5 +1,5 @@
 
-import { MapPin, Calendar, TrendingUp } from "lucide-react";
+import { MapPin, Calendar, TrendingUp, ExternalLink } from "lucide-react";
 
 interface Destination {
   id: number;
@@ -47,14 +47,18 @@ const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
     }
   };
 
+  const handleExploreClick = () => {
+    window.open('https://kiwi.com/', '_blank');
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
         <img 
           src={destination.image} 
           alt={destination.name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
@@ -70,20 +74,20 @@ const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
 
         {/* Info Pills */}
         <div className="flex flex-wrap gap-2 mb-4">
-          <div className="flex items-center gap-1 text-sm bg-gray-100 px-3 py-1 rounded-full">
-            <Calendar className="w-4 h-4" />
+          <div className="flex items-center gap-1 text-sm bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors group">
+            <Calendar className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
             <span>{destination.bestTime}</span>
           </div>
-          <div className={`flex items-center gap-1 text-sm px-3 py-1 rounded-full ${getDifficultyColor(destination.difficulty)}`}>
-            <TrendingUp className="w-4 h-4" />
+          <div className={`flex items-center gap-1 text-sm px-3 py-1 rounded-full ${getDifficultyColor(destination.difficulty)} hover:scale-105 transition-transform group`}>
+            <TrendingUp className="w-4 h-4 group-hover:translate-y-[-2px] transition-transform duration-300" />
             <span>{destination.difficulty}</span>
           </div>
         </div>
 
         {/* Tip */}
-        <div className={`${colors.bg} ${colors.border} border rounded-lg p-4 mb-4`}>
+        <div className={`${colors.bg} ${colors.border} border rounded-lg p-4 mb-4 hover:shadow-md transition-shadow group`}>
           <div className="flex items-start gap-2">
-            <MapPin className={`w-5 h-5 ${colors.accent} flex-shrink-0 mt-0.5`} />
+            <MapPin className={`w-5 h-5 ${colors.accent} flex-shrink-0 mt-0.5 group-hover:bounce animate-pulse`} />
             <div>
               <h4 className={`font-semibold ${colors.accent} mb-1`}>Dica Peregrino:</h4>
               <p className="text-sm text-gray-700">{destination.tip}</p>
@@ -92,8 +96,12 @@ const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
         </div>
 
         {/* Action Button */}
-        <button className={`w-full ${colors.button} text-white py-3 rounded-lg font-semibold transition-colors duration-200`}>
-          Explorar Destino
+        <button 
+          onClick={handleExploreClick}
+          className={`w-full ${colors.button} text-white py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 group`}
+        >
+          <span>Explorar Destino</span>
+          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-[-1px] transition-transform duration-300" />
         </button>
       </div>
     </div>

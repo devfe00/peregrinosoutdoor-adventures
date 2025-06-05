@@ -39,6 +39,24 @@ const internationalDestinations = [
     tip: "Reserve com 6 meses de antecedência. Trilha Inca requer boa forma física.",
     bestTime: "Mai - Set",
     difficulty: "Intermediário"
+  },
+  {
+    id: 5,
+    name: "Fiordos da Noruega",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
+    description: "Paisagens épicas com cachoeiras gigantes, fiordes profundos e montanhas dramáticas.",
+    tip: "Verão (junho-agosto) para trilhas. Inverno para aurora boreal.",
+    bestTime: "Jun - Ago",
+    difficulty: "Intermediário"
+  },
+  {
+    id: 6,
+    name: "Marrocos - Saara",
+    image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=4752",
+    description: "Aventura no deserto com dunas infinitas, caravanas de camelos e noites estreladas.",
+    tip: "Outubro a abril. Dias quentes, noites frias. Leve protetor solar e agasalho.",
+    bestTime: "Out - Abr",
+    difficulty: "Intermediário"
   }
 ];
 
@@ -49,11 +67,11 @@ const Internacional = () => {
       <header className="bg-indigo-600 text-white py-6">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <ArrowLeft className="w-6 h-6" />
+            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-all duration-300 group">
+              <ArrowLeft className="w-6 h-6 group-hover:translate-x-[-4px] transition-transform duration-300" />
               <span className="hidden md:block">Voltar</span>
             </Link>
-            <h1 className="text-3xl md:text-4xl font-bold text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-center animate-fade-in">
               🌍 DESTINOS INTERNACIONAIS
             </h1>
             <div className="w-20"></div>
@@ -64,10 +82,10 @@ const Internacional = () => {
       {/* Hero Section */}
       <section className="py-12 bg-indigo-100">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-indigo-800 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-indigo-800 mb-4 animate-fade-in">
             O Mundo Te Espera
           </h2>
-          <p className="text-lg text-indigo-700 max-w-3xl mx-auto">
+          <p className="text-lg text-indigo-700 max-w-3xl mx-auto animate-fade-in">
             Leve o espírito Peregrinos para além das fronteiras. Descubra destinos 
             que desafiam seus limites e expandem sua perspectiva de mundo.
           </p>
@@ -77,9 +95,15 @@ const Internacional = () => {
       {/* Destinations Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {internationalDestinations.map((destination) => (
-              <DestinationCard key={destination.id} destination={destination} theme="internacional" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {internationalDestinations.map((destination, index) => (
+              <div 
+                key={destination.id} 
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <DestinationCard destination={destination} theme="internacional" />
+              </div>
             ))}
           </div>
         </div>
@@ -94,9 +118,9 @@ const Internacional = () => {
           </p>
           <Link 
             to="/playlist" 
-            className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-400 transition-colors"
+            className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-400 transition-all duration-300 hover:scale-105 group"
           >
-            <Mountain className="w-5 h-5" />
+            <Mountain className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
             Sons para sua Aventura Global
           </Link>
         </div>
