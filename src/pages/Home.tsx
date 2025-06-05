@@ -27,6 +27,13 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
+      {/* Flying Falcon Animation */}
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        <div className="falcon-animation">
+          🦅
+        </div>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-6">
         {/* Logo */}
@@ -96,6 +103,41 @@ const Home = () => {
           ©2025 Peregrinos.Inc | Todos os direitos reservados.
         </p>
       </footer>
+
+      <style jsx>{`
+        .falcon-animation {
+          position: absolute;
+          font-size: 2rem;
+          animation: flyAcross 15s linear infinite;
+          opacity: 0.8;
+        }
+
+        @keyframes flyAcross {
+          0% {
+            transform: translate(-100px, 80vh) rotate(0deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.8;
+          }
+          25% {
+            transform: translate(25vw, 60vh) rotate(-15deg);
+          }
+          50% {
+            transform: translate(50vw, 40vh) rotate(10deg);
+          }
+          75% {
+            transform: translate(75vw, 30vh) rotate(-5deg);
+          }
+          90% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translate(calc(100vw + 100px), 20vh) rotate(5deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 };

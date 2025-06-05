@@ -26,10 +26,13 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlaySong = (song: Song) => {
-    const youtubeUrl = `https://www.youtube.com/watch?v=${song.youtubeId}`;
-    window.open(youtubeUrl, '_blank');
-    setCurrentSong(song);
-    setIsPlaying(true);
+    if (currentSong?.youtubeId === song.youtubeId && isPlaying) {
+      setIsPlaying(false);
+      setCurrentSong(null);
+    } else {
+      setCurrentSong(song);
+      setIsPlaying(true);
+    }
   };
 
   return (
@@ -43,6 +46,28 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
         <p className="text-white/90">{playlist.description}</p>
       </div>
 
+      {/* YouTube Player */}
+      {currentSong && isPlaying && (
+        <div className="p-4 bg-gray-50 border-b">
+          <div className="aspect-video w-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${currentSong.youtubeId}?autoplay=1&rel=0`}
+              title={`${currentSong.title} - ${currentSong.artist}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg"
+            ></iframe>
+          </div>
+          <div className="mt-3 text-center">
+            <h4 className="font-semibold text-gray-800">{currentSong.title}</h4>
+            <p className="text-sm text-gray-600">{currentSong.artist}</p>
+          </div>
+        </div>
+      )}
+
       {/* Songs List */}
       <div className="p-4">
         <div className="space-y-3">
@@ -55,7 +80,11 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
             >
               <div className="flex items-center gap-3">
                 <button className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:bg-purple-700 transition-all duration-300 hover:scale-110 group-hover:shadow-lg">
-                  <Play className="w-4 h-4 ml-0.5 group-hover:scale-110 transition-transform duration-300" />
+                  {currentSong?.youtubeId === song.youtubeId && isPlaying ? (
+                    <Pause className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  ) : (
+                    <Play className="w-4 h-4 ml-0.5 group-hover:scale-110 transition-transform duration-300" />
+                  )}
                 </button>
                 <div>
                   <h4 className="font-semibold text-gray-800 group-hover:text-purple-600 transition-colors">{song.title}</h4>
@@ -67,7 +96,13 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
                   <Clock className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                   <span className="text-sm">{song.duration}</span>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-purple-600 group-hover:translate-x-1 transition-all duration-300" />
+                <ExternalLink 
+                  className="w-4 h-4 text-gray-400 group-hover:text-purple-600 group-hover:translate-x-1 transition-all duration-300" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(`https://www.youtube.com/watch?v=${song.youtubeId}`, '_blank');
+                  }}
+                />
               </div>
             </div>
           ))}
@@ -81,7 +116,7 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
               <h4 className="font-semibold text-purple-800">Como ouvir:</h4>
             </div>
             <p className="text-sm text-purple-700">
-              Clique em qualquer música para abrir no YouTube e curtir sua trilha sonora perfeita! 🎵
+              Clique em qualquer música para tocar aqui mesmo, ou no ícone de link para abrir no YouTube! 🎵
             </p>
           </div>
         </div>

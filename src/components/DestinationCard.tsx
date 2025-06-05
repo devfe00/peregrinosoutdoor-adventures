@@ -1,10 +1,11 @@
 
-import { MapPin, Calendar, TrendingUp, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Calendar, TrendingUp, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Destination {
   id: number;
   name: string;
-  image: string;
+  images: string[];
   description: string;
   tip: string;
   bestTime: string;
@@ -17,6 +18,8 @@ interface DestinationCardProps {
 }
 
 const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const themeColors = {
     brasil: {
       accent: 'text-green-600',
@@ -51,15 +54,57 @@ const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
     window.open('https://kiwi.com/', '_blank');
   };
 
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % destination.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + destination.images.length) % destination.images.length);
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-      {/* Image */}
-      <div className="relative h-64 overflow-hidden">
+      {/* Image Carousel */}
+      <div className="relative h-64 overflow-hidden group">
         <img 
-          src={destination.image} 
-          alt={destination.name}
+          src={destination.images[currentImageIndex]} 
+          alt={`${destination.name} - ${currentImageIndex + 1}`}
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
         />
+        
+        {/* Navigation Arrows */}
+        {destination.images.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/70 hover:scale-110"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/70 hover:scale-110"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+
+        {/* Image Indicators */}
+        {destination.images.length > 1 && (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {destination.images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-xl font-bold text-white mb-2">{destination.name}</h3>
