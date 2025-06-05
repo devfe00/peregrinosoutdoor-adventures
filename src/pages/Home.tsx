@@ -27,11 +27,12 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Flying Falcon Animation */}
+      {/* Flying Falcons Animation */}
       <div className="absolute inset-0 z-5 pointer-events-none">
-        <div className="falcon-animation">
-          🦅
-        </div>
+        <div className="falcon-animation falcon-1">🦅</div>
+        <div className="falcon-animation falcon-2">🦅</div>
+        <div className="falcon-animation falcon-3">🦅</div>
+        <div className="falcon-animation falcon-4">🦅</div>
       </div>
 
       {/* Content */}
@@ -104,36 +105,129 @@ const Home = () => {
         </p>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         .falcon-animation {
           position: absolute;
           font-size: 2rem;
-          animation: flyAcross 15s linear infinite;
           opacity: 0.8;
         }
 
-        @keyframes flyAcross {
+        .falcon-1 {
+          animation: flyAcross1 18s linear infinite;
+        }
+
+        .falcon-2 {
+          animation: flyAcross2 22s linear infinite 5s;
+        }
+
+        .falcon-3 {
+          animation: flyAcross3 20s linear infinite 10s;
+        }
+
+        .falcon-4 {
+          animation: flyAcross4 16s linear infinite 3s;
+        }
+
+        @keyframes flyAcross1 {
           0% {
-            transform: translate(-100px, 80vh) rotate(0deg);
+            transform: translate(-100px, 20vh) rotate(0deg);
             opacity: 0;
           }
           10% {
             opacity: 0.8;
           }
           25% {
-            transform: translate(25vw, 60vh) rotate(-15deg);
+            transform: translate(30vw, 40vh) rotate(-15deg);
           }
           50% {
-            transform: translate(50vw, 40vh) rotate(10deg);
+            transform: translate(70vw, 25vh) rotate(10deg);
           }
           75% {
-            transform: translate(75vw, 30vh) rotate(-5deg);
+            transform: translate(90vw, 60vh) rotate(-5deg);
           }
           90% {
             opacity: 0.8;
           }
           100% {
-            transform: translate(calc(100vw + 100px), 20vh) rotate(5deg);
+            transform: translate(calc(100vw + 100px), 80vh) rotate(5deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes flyAcross2 {
+          0% {
+            transform: translate(calc(100vw + 100px), 70vh) rotate(180deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          25% {
+            transform: translate(80vw, 30vh) rotate(165deg);
+          }
+          50% {
+            transform: translate(40vw, 50vh) rotate(190deg);
+          }
+          75% {
+            transform: translate(20vw, 20vh) rotate(175deg);
+          }
+          90% {
+            opacity: 0.6;
+          }
+          100% {
+            transform: translate(-100px, 40vh) rotate(180deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes flyAcross3 {
+          0% {
+            transform: translate(-100px, 60vh) rotate(45deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.7;
+          }
+          30% {
+            transform: translate(25vw, 30vh) rotate(30deg);
+          }
+          60% {
+            transform: translate(60vw, 70vh) rotate(60deg);
+          }
+          80% {
+            transform: translate(85vw, 40vh) rotate(45deg);
+          }
+          90% {
+            opacity: 0.7;
+          }
+          100% {
+            transform: translate(calc(100vw + 100px), 15vh) rotate(45deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes flyAcross4 {
+          0% {
+            transform: translate(calc(100vw + 100px), 30vh) rotate(-135deg);
+            opacity: 0;
+          }
+          15% {
+            opacity: 0.9;
+          }
+          35% {
+            transform: translate(70vw, 60vh) rotate(-120deg);
+          }
+          65% {
+            transform: translate(35vw, 25vh) rotate(-150deg);
+          }
+          85% {
+            transform: translate(10vw, 75vh) rotate(-135deg);
+          }
+          95% {
+            opacity: 0.9;
+          }
+          100% {
+            transform: translate(-100px, 50vh) rotate(-135deg);
             opacity: 0;
           }
         }

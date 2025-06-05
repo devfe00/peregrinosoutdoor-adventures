@@ -96,28 +96,103 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
-				'flyAcross': {
+				'flyAcross1': {
 					'0%': {
-						transform: 'translate(-100px, 80vh) rotate(0deg)',
+						transform: 'translate(-100px, 20vh) rotate(0deg)',
 						opacity: '0'
 					},
 					'10%': {
 						opacity: '0.8'
 					},
 					'25%': {
-						transform: 'translate(25vw, 60vh) rotate(-15deg)'
+						transform: 'translate(30vw, 40vh) rotate(-15deg)'
 					},
 					'50%': {
-						transform: 'translate(50vw, 40vh) rotate(10deg)'
+						transform: 'translate(70vw, 25vh) rotate(10deg)'
 					},
 					'75%': {
-						transform: 'translate(75vw, 30vh) rotate(-5deg)'
+						transform: 'translate(90vw, 60vh) rotate(-5deg)'
 					},
 					'90%': {
 						opacity: '0.8'
 					},
 					'100%': {
-						transform: 'translate(calc(100vw + 100px), 20vh) rotate(5deg)',
+						transform: 'translate(calc(100vw + 100px), 80vh) rotate(5deg)',
+						opacity: '0'
+					}
+				},
+				'flyAcross2': {
+					'0%': {
+						transform: 'translate(calc(100vw + 100px), 70vh) rotate(180deg)',
+						opacity: '0'
+					},
+					'10%': {
+						opacity: '0.6'
+					},
+					'25%': {
+						transform: 'translate(80vw, 30vh) rotate(165deg)'
+					},
+					'50%': {
+						transform: 'translate(40vw, 50vh) rotate(190deg)'
+					},
+					'75%': {
+						transform: 'translate(20vw, 20vh) rotate(175deg)'
+					},
+					'90%': {
+						opacity: '0.6'
+					},
+					'100%': {
+						transform: 'translate(-100px, 40vh) rotate(180deg)',
+						opacity: '0'
+					}
+				},
+				'flyAcross3': {
+					'0%': {
+						transform: 'translate(-100px, 60vh) rotate(45deg)',
+						opacity: '0'
+					},
+					'10%': {
+						opacity: '0.7'
+					},
+					'30%': {
+						transform: 'translate(25vw, 30vh) rotate(30deg)'
+					},
+					'60%': {
+						transform: 'translate(60vw, 70vh) rotate(60deg)'
+					},
+					'80%': {
+						transform: 'translate(85vw, 40vh) rotate(45deg)'
+					},
+					'90%': {
+						opacity: '0.7'
+					},
+					'100%': {
+						transform: 'translate(calc(100vw + 100px), 15vh) rotate(45deg)',
+						opacity: '0'
+					}
+				},
+				'flyAcross4': {
+					'0%': {
+						transform: 'translate(calc(100vw + 100px), 30vh) rotate(-135deg)',
+						opacity: '0'
+					},
+					'15%': {
+						opacity: '0.9'
+					},
+					'35%': {
+						transform: 'translate(70vw, 60vh) rotate(-120deg)'
+					},
+					'65%': {
+						transform: 'translate(35vw, 25vh) rotate(-150deg)'
+					},
+					'85%': {
+						transform: 'translate(10vw, 75vh) rotate(-135deg)'
+					},
+					'95%': {
+						opacity: '0.9'
+					},
+					'100%': {
+						transform: 'translate(-100px, 50vh) rotate(-135deg)',
 						opacity: '0'
 					}
 				}
@@ -126,7 +201,10 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'flyAcross': 'flyAcross 15s linear infinite'
+				'flyAcross1': 'flyAcross1 18s linear infinite',
+				'flyAcross2': 'flyAcross2 22s linear infinite 5s',
+				'flyAcross3': 'flyAcross3 20s linear infinite 10s',
+				'flyAcross4': 'flyAcross4 16s linear infinite 3s'
 			}
 		}
 	},
