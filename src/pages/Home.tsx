@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MapPin, Music, Plane, Compass } from "lucide-react";
 import { useState } from "react";
 
 const Home = () => {
   const [showFalcons, setShowFalcons] = useState(false);
+  const navigate = useNavigate();
 
   const handleIconClick = () => {
     setShowFalcons(true);
-    setTimeout(() => setShowFalcons(false), 3000); // Remove falcons after 3 seconds
+    setTimeout(() => setShowFalcons(false), 3000);
+  };
+
+  const handleContactClick = () => {
+    console.log('Navegando para contato...');
+    navigate('/contato');
   };
 
   return (
@@ -23,18 +29,16 @@ const Home = () => {
         >
           <source src="/assets/mountain-climbing.mp4" type="video/mp4" />
         </video>
-        {/* Fallback image that works for both mobile and desktop */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648&h=5472')"
           }}
         />
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Flying Falcons Animation - Only show when triggered */}
+      {/* Flying Falcons Animation */}
       {showFalcons && (
         <div className="absolute inset-0 z-5 pointer-events-none">
           <div className="falcon-animation falcon-1">🦅</div>
@@ -44,12 +48,9 @@ const Home = () => {
         </div>
       )}
 
-      {/* Contact Icon - Fixed Position */}
+      {/* Contact Icon - Usando navigate ao invés de window.location.href */}
       <button 
-        onClick={() => {
-          console.log('Navegando para contato...');
-          window.location.href = '/contato';
-        }}
+        onClick={handleContactClick}
         className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
       >
         <img 
@@ -59,7 +60,7 @@ const Home = () => {
         />
       </button>
 
-      {/* Content */}
+      {/* Resto do código permanece igual */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 sm:px-6">
         {/* Logo */}
         <div className="mb-6 sm:mb-8 text-center">
