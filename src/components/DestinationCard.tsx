@@ -1,152 +1,138 @@
 
 import { useState } from "react";
-import { MapPin, Calendar, TrendingUp, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Star, Calendar, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Destination {
   id: number;
   name: string;
-  images: string[];
+  country: string;
   description: string;
-  tip: string;
+  images: string[];
+  rating: number;
   bestTime: string;
-  difficulty: string;
+  highlights: string[];
 }
 
 interface DestinationCardProps {
   destination: Destination;
-  theme: 'brasil' | 'internacional';
 }
 
-const DestinationCard = ({ destination, theme }: DestinationCardProps) => {
+const DestinationCard = ({ destination }: DestinationCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const themeColors = {
-    brasil: {
-      accent: 'text-green-600',
-      bg: 'bg-green-50',
-      border: 'border-green-200',
-      button: 'bg-green-600 hover:bg-green-700'
-    },
-    internacional: {
-      accent: 'text-blue-600',
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-      button: 'bg-blue-600 hover:bg-blue-700'
-    }
-  };
-
-  const colors = themeColors[theme];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Fácil':
-        return 'text-green-600 bg-green-100';
-      case 'Intermediário':
-        return 'text-yellow-600 bg-yellow-100';
-      case 'Avançado':
-        return 'text-red-600 bg-red-100';
-      default:
-        return 'text-gray-600 bg-gray-100';
-    }
-  };
-
-  const handleExploreClick = () => {
-    window.open('https://kiwi.com/', '_blank');
-  };
+  const isMobile = useIsMobile();
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % destination.images.length);
+    setCurrentImageIndex((prev) => 
+      prev === destination.images.length - 1 ? 0 : prev + 1
+    );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + destination.images.length) % destination.images.length);
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? destination.images.length - 1 : prev - 1
+    );
+  };
+
+  const openKiwi = () => {
+    window.open(`https://kiwi.com/search/results/${destination.name}`, '_blank');
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-102">
       {/* Image Carousel */}
-      <div className="relative h-64 overflow-hidden group">
-        <img 
-          src={destination.images[currentImageIndex]} 
-          alt={`${destination.name} - ${currentImageIndex + 1}`}
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+      <div className="relative h-48 sm:h-64 md:h-72 overflow-hidden group">
+        <img
+          src={destination.images[currentImageIndex]}
+          alt={`${destination.name} - Image ${currentImageIndex + 1}`}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         
-        {/* Navigation Arrows */}
+        {/* Image Navigation */}
         {destination.images.length > 1 && (
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/70 hover:scale-110"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-all duration-300 hover:scale-110"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/70 hover:scale-110"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-all duration-300 hover:scale-110"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
+            
+            {/* Image Indicators */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {destination.images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
           </>
         )}
 
-        {/* Image Indicators */}
-        {destination.images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {destination.images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                }`}
-              />
-            ))}
-          </div>
-        )}
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl font-bold text-white mb-2">{destination.name}</h3>
+        {/* Country/Location overlay */}
+        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-medium">
+          <MapPin className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1" />
+          {destination.country}
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <p className="text-gray-700 mb-4 leading-relaxed">
-          {destination.description}
-        </p>
-
-        {/* Info Pills */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          <div className="flex items-center gap-1 text-sm bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors group">
-            <Calendar className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-            <span>{destination.bestTime}</span>
-          </div>
-          <div className={`flex items-center gap-1 text-sm px-3 py-1 rounded-full ${getDifficultyColor(destination.difficulty)} hover:scale-105 transition-transform group`}>
-            <TrendingUp className="w-4 h-4 group-hover:translate-y-[-2px] transition-transform duration-300" />
-            <span>{destination.difficulty}</span>
-          </div>
-        </div>
-
-        {/* Tip */}
-        <div className={`${colors.bg} ${colors.border} border rounded-lg p-4 mb-4 hover:shadow-md transition-shadow group`}>
-          <div className="flex items-start gap-2">
-            <MapPin className={`w-5 h-5 ${colors.accent} flex-shrink-0 mt-0.5 group-hover:bounce animate-pulse`} />
-            <div>
-              <h4 className={`font-semibold ${colors.accent} mb-1`}>Dica Peregrino:</h4>
-              <p className="text-sm text-gray-700">{destination.tip}</p>
+      <div className="p-4 sm:p-6">
+        {/* Header */}
+        <div className="flex justify-between items-start mb-3 sm:mb-4">
+          <div>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-1">{destination.name}</h3>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                <span className="text-sm font-semibold text-gray-700">{destination.rating}</span>
+              </div>
+              <span className="text-gray-400">•</span>
+              <div className="flex items-center gap-1 text-gray-600">
+                <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm">{destination.bestTime}</span>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Description */}
+        <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+          {destination.description}
+        </p>
+
+        {/* Highlights */}
+        <div className="mb-4 sm:mb-6">
+          <h4 className="text-sm font-semibold text-gray-800 mb-2">Destaques:</h4>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+            {destination.highlights.map((highlight, index) => (
+              <span
+                key={index}
+                className="bg-blue-50 text-blue-700 px-2 sm:px-3 py-1 rounded-full text-xs font-medium border border-blue-200"
+              >
+                {highlight}
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Action Button */}
-        <button 
-          onClick={handleExploreClick}
-          className={`w-full ${colors.button} text-white py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 group`}
+        <button
+          onClick={openKiwi}
+          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group flex items-center justify-center gap-2"
         >
-          <span>Explorar Destino</span>
-          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-[-1px] transition-transform duration-300" />
+          <span className="text-sm sm:text-base">Explorar Destino</span>
+          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </button>
       </div>
     </div>
