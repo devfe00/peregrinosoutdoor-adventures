@@ -150,7 +150,7 @@ const Internacional = () => {
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <DestinationCard destination={destination} theme="internacional" />
+                <DestinationCard destination={destination} />
               </div>
             ))}
           </div>
