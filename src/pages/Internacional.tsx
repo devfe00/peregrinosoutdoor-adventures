@@ -6,7 +6,8 @@ import DestinationCard from "../components/DestinationCard";
 const internationalDestinations = [
   {
     id: 1,
-    name: "Patagonia - Argentina/Chile",
+    name: "Patagonia",
+    country: "Argentina/Chile",
     images: [
       "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648",
       "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
@@ -16,13 +17,14 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?q=80&w=3000"
     ],
     description: "Paisagens dramáticas entre glaciares, montanhas e lagos turquesa. O fim do mundo nunca foi tão belo.",
-    tip: "Melhor época: dezembro a março (verão). Ventos fortes, leve roupas impermeáveis.",
+    rating: 4.9,
     bestTime: "Dez - Mar",
-    difficulty: "Avançado"
+    highlights: ["Glaciares", "Montanhas", "Lagos turquesa", "Paisagens dramáticas"]
   },
   {
     id: 2,
-    name: "Torres del Paine - Chile",
+    name: "Torres del Paine",
+    country: "Chile",
     images: [
       "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=3072",
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
@@ -32,13 +34,14 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648"
     ],
     description: "Parque nacional com torres de granito icônicas, glaciares e uma vida selvagem única na Patagônia.",
-    tip: "Reserve camping com antecedência. Clima muda rapidamente, prepare-se para tudo.",
+    rating: 4.8,
     bestTime: "Nov - Mar",
-    difficulty: "Avançado"
+    highlights: ["Torres de granito", "Parque nacional", "Vida selvagem", "Glaciares"]
   },
   {
     id: 3,
-    name: "Salar de Uyuni - Bolívia",
+    name: "Salar de Uyuni",
+    country: "Bolívia",
     images: [
       "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=4368",
       "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=3000",
@@ -48,13 +51,14 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=3000"
     ],
     description: "O maior deserto de sal do mundo se transforma em um espelho gigante durante a época das chuvas.",
-    tip: "Para efeito espelho: janeiro a março. Para cristais de sal: maio a setembro.",
+    rating: 4.9,
     bestTime: "Jan - Mar / Mai - Set",
-    difficulty: "Intermediário"
+    highlights: ["Deserto de sal", "Efeito espelho", "Cristais de sal", "Paisagem única"]
   },
   {
     id: 4,
-    name: "Machu Picchu - Peru",
+    name: "Machu Picchu",
+    country: "Peru",
     images: [
       "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=7360",
       "https://images.unsplash.com/photo-1580841962527-f7d2e19b0353?q=80&w=3000",
@@ -64,13 +68,14 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=3000"
     ],
     description: "A cidade perdida dos Incas no alto dos Andes. Uma experiência espiritual e histórica única.",
-    tip: "Reserve com 6 meses de antecedência. Trilha Inca requer boa forma física.",
+    rating: 4.8,
     bestTime: "Mai - Set",
-    difficulty: "Intermediário"
+    highlights: ["Cidade Inca", "História", "Andes", "Trilha Inca"]
   },
   {
     id: 5,
     name: "Fiordos da Noruega",
+    country: "Noruega",
     images: [
       "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=3000",
@@ -80,13 +85,14 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=3000"
     ],
     description: "Paisagens épicas com cachoeiras gigantes, fiordes profundos e montanhas dramáticas.",
-    tip: "Verão (junho-agosto) para trilhas. Inverno para aurora boreal.",
+    rating: 4.7,
     bestTime: "Jun - Ago",
-    difficulty: "Intermediário"
+    highlights: ["Fiordos", "Cachoeiras", "Montanhas", "Aurora boreal"]
   },
   {
     id: 6,
     name: "Marrocos - Saara",
+    country: "Marrocos",
     images: [
       "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=4752",
       "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=3000",
@@ -96,9 +102,9 @@ const internationalDestinations = [
       "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=3000"
     ],
     description: "Aventura no deserto com dunas infinitas, caravanas de camelos e noites estreladas.",
-    tip: "Outubro a abril. Dias quentes, noites frias. Leve protetor solar e agasalho.",
+    rating: 4.6,
     bestTime: "Out - Abr",
-    difficulty: "Intermediário"
+    highlights: ["Deserto", "Dunas", "Camelos", "Noites estreladas"]
   }
 ];
 
