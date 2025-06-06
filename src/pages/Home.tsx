@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { MapPin, Music, Plane, Compass } from "lucide-react";
 import { useState } from "react";
@@ -44,6 +43,21 @@ const Home = () => {
           <div className="falcon-animation falcon-4">🦅</div>
         </div>
       )}
+
+      {/* Contact Icon - Fixed Position */}
+      <button 
+        onClick={() => {
+          console.log('Navegando para contato...');
+          window.location.href = '/contato';
+        }}
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
+      >
+        <img 
+          src="https://img.icons8.com/?size=100&id=r2dV09Ry7U3p&format=png&color=FFFFFF" 
+          alt="Contato" 
+          className="w-5 h-5 sm:w-6 sm:h-6 pointer-events-none"
+        />
+      </button>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 sm:px-6">

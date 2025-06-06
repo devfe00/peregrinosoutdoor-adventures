@@ -19,4 +19,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    // Aqui desliga o scan automático que exige o tsconfig.node.json
+    entries: [],
+  },
 }));
