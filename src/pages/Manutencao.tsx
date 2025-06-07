@@ -1,11 +1,10 @@
-
 import { Link } from "react-router-dom";
 import { ArrowLeft, Settings, Clock, Mail, Users } from "lucide-react";
 
 const Manutencao = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 relative flex flex-col">
+      {/* header */}
       <header className="bg-gray-600 text-white py-6">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
@@ -14,17 +13,17 @@ const Manutencao = () => {
               <span className="hidden md:block">Voltar</span>
             </Link>
             <h1 className="text-3xl md:text-4xl font-bold text-center">
-              CONTATO & FUTURO
+              Clube Exclusivo
             </h1>
             <div className="w-20"></div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <section className="py-20">
+      {/*principal coteudo */}
+      <section className="py-20 flex-1">
         <div className="container mx-auto px-6 text-center">
-          {/* Maintenance Alert */}
+          {/* manuntencao*/}
           <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-12 border-l-4 border-orange-500">
             <Settings className="w-16 h-16 mx-auto mb-6 text-orange-500" />
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
@@ -35,7 +34,7 @@ const Manutencao = () => {
               com novidades incríveis para a comunidade Peregrinos.
             </p>
             
-            {/* Coming Soon Features */}
+            {/*em breve */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="flex items-center gap-3 text-left">
                 <Users className="w-6 h-6 text-blue-500 flex-shrink-0" />
@@ -49,7 +48,7 @@ const Manutencao = () => {
                 <Mail className="w-6 h-6 text-green-500 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-gray-800">Newsletter</h4>
-                  <p className="text-sm text-gray-600">Dicas semanais e destinos exclusivos</p>
+                  <p className="text-sm text-gray-600">Dicas e destinos exclusivos</p>
                 </div>
               </div>
               
@@ -65,7 +64,7 @@ const Manutencao = () => {
                 <Settings className="w-6 h-6 text-orange-500 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-gray-800">Formulário de Contato</h4>
-                  <p className="text-sm text-gray-600">Fale diretamente conosco</p>
+                  <p className="text-sm text-gray-600">Fale diretamente com os<br></br>CEO's da Peregrinos.Inc</p>
                 </div>
               </div>
             </div>
@@ -99,13 +98,12 @@ const Manutencao = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6 mt-auto">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-300">
-            ©2025 Peregrinos.Inc | Todos os direitos reservados.
-          </p>
-        </div>
+      {/*footer*/}
+      <footer className="bg-black/10 backdrop-blur-sm text-center py-3 sm:py-4 mt-auto">
+
+        <p className="text-black/90 text-xs sm:text-sm px-4">
+          ©2025 Peregrinos.Inc | Todos os direitos reservados.
+        </p>
       </footer>
     </div>
   );
