@@ -56,7 +56,7 @@ const brasilDestinations = [
   },
   {
     id: 4,
-    name: "Jalapão - TO",
+    name: "Serra do Rio do Rastro - SC",
     country: "Brasil",
     images: [
       "/images-brasil/rs6.jpg",
@@ -66,10 +66,10 @@ const brasilDestinations = [
     "/images-brasil/rs5.jpg",
     "/images-brasil/rs1.jpg"
     ],
-    description: "Cerrado preservado com dunas douradas, fervedouros naturais e cachoeiras em meio ao sertão.",
+    description: "Montanhas impressionantes, estradas sinuosas e mirantes de tirar o fôlego no coração de Santa Catarina.",
     rating: 4.6,
     bestTime: "Mai - Set",
-    highlights: ["Dunas douradas", "Fervedouros", "Cerrado", "Cachoeiras"]
+    highlights: ["Vista panorâmica da serra", "Trilhas", "Escalada", "Cachoeiras"]
   }
 ];
 
