@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Plane, Globe, Mountain, MapPin, Calendar, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const internationalDestinations = [
@@ -106,6 +106,7 @@ const internationalDestinations = [
     highlights: ["Deserto", "Dunas", "Camelos", "Noites estreladas"]
   }
 ];
+
 const InternationalParticles = () => {
   const particles = [
     { icon: "❄️", delay: "0s", duration: "15s", left: "10%", size: "2rem" },
@@ -249,16 +250,27 @@ const DestinationCard = ({ destination, index }) => {
         </div>
         
         {/*botao*/}
-        <button className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white py-3 rounded-xl font-semibold hover:from-indigo-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg">
+        <a 
+          href="https://kiwi.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white py-3 rounded-xl font-semibold hover:from-indigo-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
+        >
           Explorar Destino
           <Plane className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-        </button>
+        </a>
       </div>
     </div>
   );
 };
 
 const Internacional = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contato');
+  };
+
   return (
     <>
       <style>{`
@@ -309,6 +321,18 @@ const Internacional = () => {
       `}</style>
       
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 relative">
+        {/* Botão de contato fixo */}
+        <button
+          onClick={handleContactClick}
+          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
+        >
+          <img
+            src="https://img.icons8.com/?size=100&id=r2dV09Ry7U3p&format=png&color=FFFFFF"
+            alt="Contato"
+            className="w-5 h-5 sm:w-6 sm:h-6 pointer-events-none"
+          />
+        </button>
+
         {/*partículas internacionais */}
         <InternationalParticles />
         
@@ -340,7 +364,7 @@ const Internacional = () => {
             </h2>
             <p className="text-lg text-indigo-700 max-w-3xl mx-auto animate-slide-in-right" style={{ animationDelay: '0.3s' }}>
               Leve o espírito Peregrinos para além das fronteiras. Descubra destinos 
-              que desafiam seus limites e expandem sua perspectiva de mundo.
+              que desafiam seus limites e expandem sua perspektiva de mundo.
             </p>
           </div>
         </section>

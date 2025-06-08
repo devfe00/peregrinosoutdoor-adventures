@@ -33,3 +33,15 @@ const App = () => (
 );
 
 export default App;
+
+
+  //código finalizado, agora é só esperar os bugs aparecerem
+  //Fe – o dev mestre dos bugs
+
+  /*
+       ,--./,-.        / >$
+      / #      /
+     |       |
+      \        \
+       `._,._,'
+  */

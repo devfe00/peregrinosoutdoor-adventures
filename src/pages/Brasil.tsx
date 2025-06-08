@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Calendar, Camera, Star, ChevronLeft, ChevronRight, Plane } from "lucide-react";
 
 const brasilDestinations = [
@@ -7,12 +8,12 @@ const brasilDestinations = [
     name: "Chapada Diamantina - BA",
     country: "Brasil",
     images: [
-      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=3072",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
-      "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?q=80&w=3000",
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=3000",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=3000",
-      "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?q=80&w=3000"
+      "/images-brasil/photo-1.jpg",
+    "/images-brasil/photo-2.jpg",
+    "/images-brasil/photo-3.jpg",
+    "/images-brasil/photo-4.jpg",
+    "/images-brasil/photo-5.jpg",
+    "/images-brasil/photo-6.jpg"
     ],
     description: "Trilhas incríveis entre cânions, cachoeiras cristalinas e formações rochosas únicas. Um dos tesouros mais preservados do Brasil.",
     rating: 4.8,
@@ -21,49 +22,49 @@ const brasilDestinations = [
   },
   {
     id: 2,
-    name: "Lençóis Maranhenses - MA",
+    name: "Serrinha do Alambari - RJ",
     country: "Brasil",
     images: [
-      "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=7360",
-      "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=3000",
-      "https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?q=80&w=3000",
-      "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=4368",
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=3000",
-      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=3000"
+      "/images-brasil/rj6.jpg",
+    "/images-brasil/rj2.jpg",
+    "/images-brasil/rj3.jpg",
+    "/images-brasil/rj4.jpg",
+    "/images-brasil/rj5.jpg",
+    "/images-brasil/rj1.jpg"
     ],
-    description: "Dunas de areia branca intercaladas com lagoas de água doce formam um cenário surreal e único no mundo.",
-    rating: 4.9,
+    description: "Destino perfeito pra quem curte trekking e camping no meio da natureza. A região tem trilhas leves, rios de água gelada e poços cristalinos, tudo cercado pela vibe da Mata Atlântica.",
+    rating: 4.6,
     bestTime: "Jun - Set",
-    highlights: ["Dunas", "Lagoas", "Paisagem única", "Areia branca"]
+    highlights: ["Rochas", "Trilhas", "Poços naturais", "Cachoeiras"]
   },
   {
     id: 3,
-    name: "Serra da Canastra - MG",
+    name: "Serra do Cipó – MG",
     country: "Brasil",
     images: [
-      "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=4368",
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
-      "https://images.unsplash.com/photo-1565788999165-bfded35b5de3?q=80&w=3000",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
-      "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?q=80&w=3000",
-      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=3000"
+      "/images-brasil/mg6.jpg",
+    "/images-brasil/mg2.jpg",
+    "/images-brasil/mg3.jpg",
+    "/images-brasil/mg4.jpg",
+    "/images-brasil/mg5.jpg",
+    "/images-brasil/mg1.jpg"
     ],
-    description: "Berço do Rio São Francisco, oferece cachoeiras espetaculares, trilhas e a famosa Casca d'Anta.",
-    rating: 4.7,
+    description: "Paraíso dos aventureiros, a Serra do Cipó mistura trilhas intensas, cachoeiras cristalinas e paredões perfeitos para escalada. Um dos destinos mais versáteis para trekking e natureza selvagem em Minas Gerais.",
+    rating: 4.8,
     bestTime: "Abr - Set",
-    highlights: ["Cachoeiras", "Rio São Francisco", "Casca d'Anta", "Trilhas"]
+    highlights: ["Escalada", "Trekking", "Cachoeiras", "Cânions", "Parque Nacional"]
   },
   {
     id: 4,
     name: "Jalapão - TO",
     country: "Brasil",
     images: [
-      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648",
-      "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=4752",
-      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=3000",
-      "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=3000",
-      "https://images.unsplash.com/photo-1566378489288-1b331e6c2d15?q=80&w=3000",
-      "https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?q=80&w=3000"
+      "/images-brasil/rs6.jpg",
+    "/images-brasil/rs2.jpg",
+    "/images-brasil/rs3.jpg",
+    "/images-brasil/rs4.jpg",
+    "/images-brasil/rs5.jpg",
+    "/images-brasil/rs1.jpg"
     ],
     description: "Cerrado preservado com dunas douradas, fervedouros naturais e cachoeiras em meio ao sertão.",
     rating: 4.6,
@@ -112,7 +113,7 @@ const BrazilianParticles = () => {
   );
 };
 
-//card de destino animado
+//card destino
 const DestinationCard = ({ destination, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -123,6 +124,10 @@ const DestinationCard = ({ destination, index }) => {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + destination.images.length) % destination.images.length);
+  };
+
+  const handleExploreDestination = () => {
+    window.open('https://kiwi.com', '_blank');
   };
 
   return (
@@ -220,8 +225,11 @@ const DestinationCard = ({ destination, index }) => {
           </div>
         </div>
         
-        {        /*botão */}
-        <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg">
+        {/*botão */}
+        <button 
+          onClick={handleExploreDestination}
+          className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
+        >
           Explorar Destino
           <Plane className="w-4 h-4 group-hover:rotate-12 transition-transform" />
         </button>
@@ -231,6 +239,12 @@ const DestinationCard = ({ destination, index }) => {
 };
 
 const Brasil = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contato');
+  };
+
   return (
     <>
       <style>{`
@@ -310,6 +324,18 @@ const Brasil = () => {
       `}</style>
       
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-yellow-50 relative">
+        {/* Botão de contato fixo */}
+        <button
+          onClick={handleContactClick}
+          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
+        >
+          <img
+            src="https://img.icons8.com/?size=100&id=r2dV09Ry7U3p&format=png&color=FFFFFF"
+            alt="Contato"
+            className="w-5 h-5 sm:w-6 sm:h-6 pointer-events-none"
+          />
+        </button>
+
         {/*partículas brasileiras*/}
         <BrazilianParticles />
         
@@ -369,10 +395,13 @@ const Brasil = () => {
             <p className="text-lg mb-6">
               Cada destino é uma nova história. Qual será a sua próxima?
             </p>
-            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-400 text-green-800 px-8 py-4 rounded-xl font-semibold hover:from-yellow-400 hover:to-yellow-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl group">
+            <Link 
+              to="/playlist"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-400 text-green-800 px-8 py-4 rounded-xl font-semibold hover:from-yellow-400 hover:to-yellow-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl group"
+            >
               <Camera className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Trilha Sonora para sua Jornada
-            </button>
+            </Link>
           </div>
         </section>
 

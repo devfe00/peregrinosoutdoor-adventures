@@ -10,22 +10,22 @@ const playlists = [
     color: "from-green-400 to-blue-500",
     songs: [
       {
-        title: "Aquarela",
-        artist: "Toquinho",
-        youtubeId: "LnhGnO42Yxw",
-        duration: "3:54"
+        title: "Céu Azul",
+        artist: "Charlie Brown Jr",
+        youtubeId: "8Pilhg_dIQs",
+        duration: "3:19"
       },
       {
-        title: "Encontros e Despedidas",
-        artist: "Milton Nascimento",
-        youtubeId: "Q3bqnMBX4lk",
-        duration: "4:12"
+        title: "Pupila",
+        artist: "Ana Vitória, Vitor Kley",
+        youtubeId: "9Sk7RQtSl5g",
+        duration: "4:13"
       },
       {
-        title: "Waves",
-        artist: "Dean Lewis",
-        youtubeId: "dKlgCk3IGBg",
-        duration: "3:20"
+        title: "Chill Vibes",
+        artist: "Lo-Fi Homer",
+        youtubeId: "TbAjL4qgzC0",
+        duration: "1:07:53"
       }
     ]
   },
@@ -36,22 +36,22 @@ const playlists = [
     color: "from-orange-400 to-red-500",
     songs: [
       {
-        title: "Tocando em Frente",
-        artist: "Almir Sater",
-        youtubeId: "U9GGNNyXoSE",
+        title: "Menina Solta",
+        artist: "GIULIA BE",
+        youtubeId: "CGbzvayv5HA",
         duration: "4:38"
       },
       {
-        title: "Born to Be Wild",
-        artist: "Steppenwolf",
-        youtubeId: "rMbATaj7Il8",
-        duration: "3:30"
+        title: "Saudades do Tempo",
+        artist: "Maneva",
+        youtubeId: "hpOWZVu7sKY",
+        duration: "3:58"
       },
       {
-        title: "Viajante",
-        artist: "Hermeto Pascoal",
-        youtubeId: "JnEaF7X8oXY",
-        duration: "5:22"
+        title: "Dias De Luta, Dias De Glória",
+        artist: "Charlie Brown Jr",
+        youtubeId: "6eEOegzrwJg",
+        duration: "2:25"
       }
     ]
   },
@@ -62,22 +62,22 @@ const playlists = [
     color: "from-yellow-400 to-green-600",
     songs: [
       {
-        title: "Saudade dos Aviões da Panair",
-        artist: "Milton Nascimento",
-        youtubeId: "OKdlm3kxHpQ",
-        duration: "4:45"
+        title: "Is This Love",
+        artist: "Bob Marley",
+        youtubeId: "69RdQFDuYPI",
+        duration: "3:53"
       },
       {
         title: "Three Little Birds",
         artist: "Bob Marley",
         youtubeId: "HNBCVM4KbUM",
-        duration: "3:05"
+        duration: "3:12"
       },
       {
-        title: "Pai Francisco",
-        artist: "Fagner",
-        youtubeId: "wKgZ_gPe1w0",
-        duration: "4:18"
+        title: "Beautiful",
+        artist: "Snoop Dogg ft. Pharrell Williams",
+        youtubeId: "nI6jSRgvfjI",
+        duration: "5:21"
       }
     ]
   }
