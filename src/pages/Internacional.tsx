@@ -5,106 +5,158 @@ import { ArrowLeft, Plane, Globe, Mountain, MapPin, Calendar, Star, ChevronLeft,
 const internationalDestinations = [
   {
     id: 1,
-    name: "Patagonia",
-    country: "Argentina/Chile",
+    name: "Ilhas Faroe",
+    country: "Dinamarca",
     images: [
-      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648",
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
-      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=3000",
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=3000",
-      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?q=80&w=3000"
+      "/images-internacional/din.jpg",
+    "/images-internacional/din2.jpg",
+    "/images-internacional/din3.jpg",
+    "/images-internacional/din4.jpg",
+    "/images-internacional/din5.jpg",
+    "/images-internacional/din6.jpg"
     ],
-    description: "Paisagens dramáticas entre glaciares, montanhas e lagos turquesa. O fim do mundo nunca foi tão belo.",
-    rating: 4.9,
-    bestTime: "Dez - Mar",
-    highlights: ["Glaciares", "Montanhas", "Lagos turquesa", "Paisagens dramáticas"]
+    description: "Território remoto com penhascos verticais, vilarejos vikings e neblina que abraça as montanhas. Perfeito pra quem curte aventura com vibe misteriosa.",
+    rating: 5.0,
+    bestTime: "Mai - Set",
+    highlights: ["Penhascos épicos", "Trilhas selvagens", "Vilas vikings", "Neblina mística"]
   },
   {
     id: 2,
-    name: "Torres del Paine",
-    country: "Chile",
+    name: "Parque Nacional de Banff",
+    country: "Canadá",
     images: [
-      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=3072",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
-      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=3000",
-      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=3000",
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
-      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=3648"
+      "/images-internacional/cad1.jpg",
+    "/images-internacional/cad2.jpg",
+    "/images-internacional/cad3.jpg",
+    "/images-internacional/cad4.jpeg",
+    "/images-internacional/cad5.jpeg",
+    "/images-internacional/cad6.jpg"
     ],
-    description: "Parque nacional com torres de granito icônicas, glaciares e uma vida selvagem única na Patagônia.",
-    rating: 4.8,
-    bestTime: "Nov - Mar",
-    highlights: ["Torres de granito", "Parque nacional", "Vida selvagem", "Glaciares"]
+    description: "Lagos glaciares, trilhas alpinas e vida selvagem em meio às Montanhas Rochosas. Cenário de sonho real.",
+    rating: 5.0,
+    bestTime: "Jun - Set",
+    highlights: ["Lagos glaciares", "Montanhas rochosas", "Trilhas panorâmicas", "Vida selvagem", "Ciclismo"]
   },
   {
     id: 3,
-    name: "Salar de Uyuni",
-    country: "Bolívia",
+    name: "Yosemite",
+    country: "Califórnia, EUA",
     images: [
-      "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=4368",
-      "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=3000",
-      "https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?q=80&w=3000",
-      "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=4752",
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=3000",
-      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=3000"
+     "/images-internacional/eu1.jpg",
+    "/images-internacional/eu2.jpg",
+    "/images-internacional/eu3.jpg",
+    "/images-internacional/eu4.jpg",
+    "/images-internacional/eu5.jpg",
+    "/images-internacional/eu6.jpg"
     ],
-    description: "O maior deserto de sal do mundo se transforma em um espelho gigante durante a época das chuvas.",
+    description: "Granitos gigantes, trilhas lendárias e cachoeiras sazonais no coração da Califórnia. Natureza bruta e vibe épica.",
     rating: 4.9,
-    bestTime: "Jan - Mar / Mai - Set",
-    highlights: ["Deserto de sal", "Efeito espelho", "Cristais de sal", "Paisagem única"]
+    bestTime: "Mai - Out",
+    highlights: ["El Capitan", "Cachoeiras sazonais", "Escalada", "Trilhas épicas", "Sequoias gigantes"]
   },
-  {
-    id: 4,
-    name: "Machu Picchu",
-    country: "Peru",
-    images: [
-      "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=7360",
-      "https://images.unsplash.com/photo-1580841962527-f7d2e19b0353?q=80&w=3000",
-      "https://images.unsplash.com/photo-1521336575822-6da63fb45455?q=80&w=3000",
-      "https://images.unsplash.com/photo-1546614042-7df3c24c9e1a?q=80&w=3000",
-      "https://images.unsplash.com/photo-1524055988636-436cfa46e59e?q=80&w=3000",
-      "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=3000"
-    ],
-    description: "A cidade perdida dos Incas no alto dos Andes. Uma experiência espiritual e histórica única.",
-    rating: 4.8,
-    bestTime: "Mai - Set",
-    highlights: ["Cidade Inca", "História", "Andes", "Trilha Inca"]
-  },
+{
+  id: 4,
+  name: "Landmannalaugar",
+  country: "Islândia",
+  images: [
+    "/images-internacional/isl1.jpg",
+    "/images-internacional/isl2.jpg",
+    "/images-internacional/isl3.jpg",
+    "/images-internacional/isl4.jpg",
+    "/images-internacional/isl5.jpg",
+    "/images-internacional/isl6.jpg"
+  ],
+  description: "Montanhas coloridas, campos de lava e fontes termais no meio do nada. Trekking aqui parece viagem pra outro planeta.",
+  rating: 4.9,
+  bestTime: "Jun - Set",
+  highlights: ["Trilha Laugavegur", "Montanhas riolíticas", "Campos de lava", "Águas termais naturais"]
+},
   {
     id: 5,
-    name: "Fiordos da Noruega",
-    country: "Noruega",
+    name: "Zermatt & Matterhorn",
+    country: "Suíça",
     images: [
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=4000",
-      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=3000",
-      "https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?q=80&w=3000",
-      "https://images.unsplash.com/photo-1570700905904-3b1c3c8cbfa9?q=80&w=3000",
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=3000",
-      "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=3000"
+    "/images-internacional/su2.jpg",
+    "/images-internacional/su1.jpg",
+    "/images-internacional/su3.jpg",
+    "/images-internacional/su4.jpeg",
+    "/images-internacional/su5.jpg",
+    "/images-internacional/su6.jpg",
+    "/images-internacional/su7.jpg"
     ],
-    description: "Paisagens épicas com cachoeiras gigantes, fiordes profundos e montanhas dramáticas.",
-    rating: 4.7,
-    bestTime: "Jun - Ago",
-    highlights: ["Fiordos", "Cachoeiras", "Montanhas", "Aurora boreal"]
-  },
+description: "Vilarejo alpino aos pés do icônico Matterhorn, com trilhas, escaladas e rotas de bike de tirar o fôlego.",
+  rating: 5.0,
+  bestTime: "Jun - Set",
+  highlights: ["Matterhorn", "Trilhas alpinas", "Escalada", "Ciclismo de montanha"]
+},
   {
     id: 6,
-    name: "Marrocos - Saara",
-    country: "Marrocos",
+    name: "Dolomitas",
+    country: "Itália",
     images: [
-      "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=4752",
-      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=3000",
-      "https://images.unsplash.com/photo-1457269449834-928af64c684d?q=80&w=3000",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3000",
-      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=3000",
-      "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=3000"
+    "/images-internacional/ita1.jpg",
+    "/images-internacional/ita2.jpg",
+    "/images-internacional/ita3.jpg",
+    "/images-internacional/ita4.jpg",
+    "/images-internacional/ita5.jpg",
+    "/images-internacional/ita6.jpg"
     ],
-    description: "Aventura no deserto com dunas infinitas, caravanas de camelos e noites estreladas.",
-    rating: 4.6,
-    bestTime: "Out - Abr",
-    highlights: ["Deserto", "Dunas", "Camelos", "Noites estreladas"]
-  }
+    description: "Picos pontiagudos, trilhas alpinas e vilarejos charmosos. Montanha cinematográfica em cada curva.",
+    rating: 4.9,
+    bestTime: "Jun - Set",
+    highlights: ["Tre Cime di Lavaredo", "Trilhas panorâmicas", "Alpes italianos", "Refúgios de montanha"]
+  },
+    {
+    id: 7,
+  name: "Parque Nacional de Aoraki/Mount Cook",
+  country: "Nova Zelândia",
+  images: [
+    "/images-internacional/nz1.jpg",
+    "/images-internacional/nz2.jpg",
+    "/images-internacional/nz3.jpeg",
+    "/images-internacional/nz4.jpg",
+    "/images-internacional/nz5.jpg",
+    "/images-internacional/nz6.jpeg"
+  ],
+  description: "Lar do pico mais alto da Nova Zelândia, com trilhas épicas, glaciares e céu estrelado de outro planeta.",
+  rating: 4.8,
+  bestTime: "Nov - Mar",
+  highlights: ["Mount Cook", "Trilhas alpinas", "Glaciares", "Observação de estrelas"]
+},
+    {
+    id: 8,
+    name: "Ilhas Lofoten",
+    country: "Noruega",
+    images: [
+    "/images-internacional/no1.jpg",
+    "/images-internacional/no2.jpg",
+    "/images-internacional/no3.jpeg",
+    "/images-internacional/no4.jpeg",
+    "/images-internacional/no5.jpg",
+    "/images-internacional/no6.jpeg"
+    ],
+description: "Arquipélago selvagem com picos afiados, trilhas insanas e vilarejos de pescador entre fiordes. O cenário é de outro mundo — e ainda rola escalada nas pedras!",
+  rating: 4.9,
+  bestTime: "Mai - Set",
+  highlights: ["Reinebringen", "Fiordes dramáticos", "Escalada em rocha", "Vilarejos vikings", "Sol da meia-noite"]
+},
+    {
+    id: 9,
+    name: "Parque Nacional Jotunheimen",
+    country: "Noruega",
+    images: [
+    "/images-internacional/nor1.jpg",
+    "/images-internacional/nor2.webp",
+    "/images-internacional/nor3.jpg",
+    "/images-internacional/nor4.webp",
+    "/images-internacional/nor5.jpg",
+    "/images-internacional/nor6.jpg"
+    ],
+    description: "Picos pontiagudos, trilhas alpinas e vilarejos charmosos. Montanha cinematográfica em cada curva.",
+    rating: 5.0,
+    bestTime: "Jun - Set",
+    highlights: ["Tre Cime di Lavaredo", "Trilhas panorâmicas", "Alpes italianos", "Refúgios de montanha"]
+  },
 ];
 
 const InternationalParticles = () => {
@@ -320,8 +372,8 @@ const Internacional = () => {
         }
       `}</style>
       
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 relative">
-        {/* Botão de contato fixo */}
+<div className="min-h-screen h-full bg-gradient-to-b from-blue-50 to-indigo-50 relative">
+          {/* Botão de contato fixo */}
         <button
           onClick={handleContactClick}
           className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
@@ -384,6 +436,34 @@ const Internacional = () => {
           </div>
         </section>
 
+      {/*em breve*/}
+<div className="mt-16 mb-12 px-4 text-center">
+  <div className="group">
+    <a 
+      href="https://peregrinosout.com" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-indigo-100 hover:border-indigo-200 transform hover:scale-105 hover:-translate-y-1 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-100/50 cursor-pointer"
+    >
+      <div className="flex gap-1.5">
+        <div className="w-2.5 h-2.5 bg-indigo-400 rounded-full animate-bounce"></div>
+        <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full animate-bounce" style={{animationDelay: '0.3s'}}></div>
+        <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full animate-bounce" style={{animationDelay: '0.6s'}}></div>
+      </div>
+      
+      <span className="text-indigo-700 font-semibold text-sm sm:text-base group-hover:text-indigo-800 transition-colors duration-300">
+        Calma que tem mais vindo aí!<br></br> Enquanto isso, equipe seu rolê com nossos produtos.
+      </span>
+      
+      <div className="opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+        <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </div>
+    </a>
+  </div>
+</div>
+      
         {/*ação*/}
         <section className="py-12 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>

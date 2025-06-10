@@ -85,8 +85,8 @@ const playlists = [
 
 const Playlist = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 relative overflow-hidden">
-      {/*elementos*/}
+<div className="min-h-screen h-full bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 relative overflow-hidden">
+        {/*elementos*/}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-32 h-32 border-4 border-white rounded-full animate-pulse"></div>
         <div className="absolute top-40 right-32 w-24 h-24 border-2 border-purple-400 rounded-full animate-bounce"></div>

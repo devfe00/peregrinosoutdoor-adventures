@@ -69,7 +69,7 @@ const brasilDestinations = [
     description: "Montanhas impressionantes, estradas sinuosas e mirantes de tirar o fôlego no coração de Santa Catarina.",
     rating: 4.6,
     bestTime: "Mai - Set",
-    highlights: ["Vista panorâmica da serra", "Trilhas", "Escalada", "Cachoeiras"]
+    highlights: ["Vista panorâmica da serra", "Trilhas", "Escalada", "Mirantes"]
   }
 ];
 
@@ -323,7 +323,7 @@ const Brasil = () => {
         }
       `}</style>
       
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-yellow-50 relative">
+      <div className="min-h-screen h-full bg-gradient-to-b from-blue-50 to-indigo-50 relative">
         {/* Botão de contato fixo */}
         <button
           onClick={handleContactClick}
@@ -386,6 +386,36 @@ const Brasil = () => {
             </div>
           </div>
         </section>
+
+{/* em breve */}
+<div className="mt-16 mb-12 px-4 text-center">
+  <div className="group">
+    <a 
+      href="https://peregrinosout.com" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 bg-gradient-to-r from-green-50 via-yellow-50 to-blue-50 hover:from-green-100 hover:via-yellow-100 hover:to-blue-100 px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-green-100 hover:border-green-200 transform hover:scale-105 hover:-translate-y-1 transition-all duration-500 hover:shadow-xl hover:shadow-green-100/50 cursor-pointer"
+    >
+<div className="flex gap-1.5">
+  <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-bounce"></div>
+  <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+  <div className="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+  <div className="w-2.5 h-2.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
+</div>
+      
+      <span className="text-green-800 font-semibold text-sm sm:text-base group-hover:text-green-900 transition-colors duration-300">
+        Calma que tem mais vindo aí!<br />Enquanto isso, equipe seu rolê com nossos produtos.
+      </span>
+      
+      <div className="opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+        <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </div>
+    </a>
+  </div>
+</div>
+
 
         {/*acao */}
         <section className="py-12 bg-gradient-to-r from-green-600 to-green-700 text-white relative overflow-hidden">
