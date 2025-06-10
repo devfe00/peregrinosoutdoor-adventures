@@ -48,7 +48,7 @@ const playlists = [
         duration: "3:58"
       },
       {
-        title: "Dias De Luta, Dias De Glória",
+        title: "Dias De Luta e Glória",
         artist: "Charlie Brown Jr",
         youtubeId: "6eEOegzrwJg",
         duration: "2:25"
@@ -75,7 +75,7 @@ const playlists = [
       },
       {
         title: "Beautiful",
-        artist: "Snoop Dogg ft. Pharrell Williams",
+        artist: "Snoop Dogg e Pharrell",
         youtubeId: "nI6jSRgvfjI",
         duration: "5:21"
       }
@@ -187,9 +187,9 @@ const Playlist = () => {
             </h3>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
           </div>
-          {/* Mobile Carousel */}
+
+          {/*setas*/}
           <div className="lg:hidden relative">
-            {/* Left Arrow */}
             <button 
               onClick={scrollLeft}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-purple-600/80 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-purple-500/80 transition-all duration-300"
@@ -197,7 +197,6 @@ const Playlist = () => {
               <ChevronLeft className="w-4 h-4" />
             </button>
             
-            {/* Right Arrow */}
             <button 
               onClick={scrollRight}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-purple-600/80 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-purple-500/80 transition-all duration-300"
@@ -218,7 +217,7 @@ const Playlist = () => {
                 ))}
               </div>
             </div>
-            {/* Scroll indicator */}
+            {/*scroll indicator*/}
             <div className="flex justify-center mt-4 gap-2">
               {playlists.map((_, index) => (
                 <div key={index} className="w-2 h-2 bg-purple-400/50 rounded-full"></div>
@@ -226,7 +225,6 @@ const Playlist = () => {
             </div>
           </div>
 
-          {/* Desktop Grid */}
           <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {playlists.map((playlist, index) => (
               <div 
