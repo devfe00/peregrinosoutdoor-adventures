@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Plane, Globe, Mountain, MapPin, Calendar, Star, ChevronLeft, ChevronRight } from "lucide-react";
+
 
 const internationalDestinations = [
   {
@@ -197,6 +198,19 @@ const InternationalParticles = () => {
 const DestinationCard = ({ destination, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % destination.images.length);
@@ -204,6 +218,30 @@ const DestinationCard = ({ destination, index }) => {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + destination.images.length) % destination.images.length);
+  };
+
+  // swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
   };
 
   return (
@@ -216,7 +254,12 @@ const DestinationCard = ({ destination, index }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/*container imagem */}
-      <div className="relative h-64 overflow-hidden">
+      <div 
+        className="relative h-64 overflow-hidden"
+        onTouchStart={isMobile ? handleTouchStart : undefined}
+        onTouchMove={isMobile ? handleTouchMove : undefined}
+        onTouchEnd={isMobile ? handleTouchEnd : undefined}
+      >
         <img
           src={destination.images[currentImageIndex]}
           alt={destination.name}
@@ -228,20 +271,24 @@ const DestinationCard = ({ destination, index }) => {
         {/*overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         
-        {/*setas */}
-        <button
-          onClick={prevImage}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 group/arrow"
-        >
-          <ChevronLeft className="w-4 h-4 group-hover/arrow:-translate-x-0.5 transition-transform" />
-        </button>
-        
-        <button
-          onClick={nextImage}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 group/arrow"
-        >
-          <ChevronRight className="w-4 h-4 group-hover/arrow:translate-x-0.5 transition-transform" />
-        </button>
+        {/*setas- apenas no desktop */}
+        {!isMobile && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 group/arrow"
+            >
+              <ChevronLeft className="w-4 h-4 group-hover/arrow:-translate-x-0.5 transition-transform" />
+            </button>
+            
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 group/arrow"
+            >
+              <ChevronRight className="w-4 h-4 group-hover/arrow:translate-x-0.5 transition-transform" />
+            </button>
+          </>
+        )}
         
         {/*badge do país */}
         <div className="absolute top-4 left-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 animate-bounce-gentle">
@@ -249,13 +296,13 @@ const DestinationCard = ({ destination, index }) => {
           {destination.country}
         </div>
         
-        {/*avaliacão */}
+        {/*avaliação*/}
         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 hover:bg-white transition-colors">
           <Star className="w-4 h-4 text-yellow-500 fill-current animate-pulse" />
           <span className="text-sm font-semibold">{destination.rating}</span>
         </div>
         
-        {/*navegação */}
+        {/*navegação*/}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
           {destination.images.map((_, i) => (
             <button
@@ -267,9 +314,15 @@ const DestinationCard = ({ destination, index }) => {
             />
           ))}
         </div>
+
+        {/*swipe pra arrastar pro lado*/}
+        {isMobile && (
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white/70 text-xs animate-pulse">
+          </div>
+        )}
       </div>
       
-      {/*card */}
+      {/*card content */}
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-all duration-500 group-hover:scale-105 transform">
           {destination.name}
@@ -286,7 +339,7 @@ const DestinationCard = ({ destination, index }) => {
           {destination.description}
         </p>
         
-        {/*destaqu*/}
+        {/*destaques*/}
         <div className="mb-4">
           <p className="text-sm font-semibold text-gray-800 mb-2">Destaques:</p>
           <div className="flex flex-wrap gap-2">
@@ -311,6 +364,117 @@ const DestinationCard = ({ destination, index }) => {
           Explorar Destino
           <Plane className="w-4 h-4 group-hover:rotate-12 transition-transform" />
         </a>
+      </div>
+    </div>
+  );
+};
+
+const MobileCarousel = ({ destinations }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const nextSlide = () => {
+    if (currentIndex < destinations.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  if (!isMobile) {
+    //desktop:  grid normal
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {destinations.map((destination, index) => (
+          <DestinationCard 
+            key={destination.id} 
+            destination={destination} 
+            index={index}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  //mobile:carrossel
+  return (
+    <div className="relative">
+      {/*carrossel*/}
+      <div className="overflow-hidden">
+        <div 
+          ref={scrollRef}
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {destinations.map((destination, index) => (
+            <div key={destination.id} className="w-full flex-shrink-0 px-4">
+              <DestinationCard 
+                destination={destination} 
+                index={index}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/*setas*/}
+<button
+  onClick={prevSlide}
+  disabled={currentIndex === 0}
+  className={`absolute left-1 top-1/2 transform -translate-y-1/2 bg-[rgb(67_56_202/0.4)] backdrop-blur-md rounded-full p-2 transition-all duration-300 ${
+    currentIndex === 0 
+      ? 'opacity-30 cursor-not-allowed' 
+      : 'hover:bg-[rgb(67_56_202/0.6)] hover:scale-105 active:scale-95'
+  }`}
+>
+  <ChevronLeft className="w-4 h-4 text-white" />
+</button>
+
+<button
+  onClick={nextSlide}
+  disabled={currentIndex === destinations.length - 1}
+  className={`absolute right-1 top-1/2 transform -translate-y-1/2 bg-[rgb(67_56_202/0.4)] backdrop-blur-md rounded-full p-2 transition-all duration-300 ${
+    currentIndex === destinations.length - 1 
+      ? 'opacity-30 cursor-not-allowed' 
+      : 'hover:bg-[rgb(67_56_202/0.6)] hover:scale-105 active:scale-95'
+  }`}
+>
+  <ChevronRight className="w-4 h-4 text-white" />
+</button>
+
+      {/*indicadores de página */}
+      <div className="flex justify-center mt-6 gap-2">
+        {destinations.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentIndex 
+                ? 'bg-indigo-600 scale-125' 
+                : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/*contador*/}
+      <div className="text-center mt-4 text-sm text-gray-600">
+        {currentIndex + 1} de {destinations.length}
       </div>
     </div>
   );
@@ -422,20 +586,11 @@ const Internacional = () => {
         </section>
 
         {/*destinos*/}
-        <section className="py-16 relative z-10">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {internationalDestinations.map((destination, index) => (
-                <DestinationCard 
-                  key={destination.id} 
-                  destination={destination} 
-                  index={index}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
+<section className="py-16 relative z-10">
+  <div className="container mx-auto px-6">
+    <MobileCarousel destinations={internationalDestinations} />
+  </div>
+</section>
       {/*em breve*/}
 <div className="mt-16 mb-12 px-4 text-center">
   <div className="group">

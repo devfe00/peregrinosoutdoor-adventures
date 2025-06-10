@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Music, Play, Volume2, Disc3, Radio, Headphones } from "lucide-react";
+import { ArrowLeft, Music, Play, Volume2, Disc3, Radio, Headphones, ChevronLeft, ChevronRight } from "lucide-react";
 import PlaylistCard from "../components/PlaylistCard";
 
 const playlists = [
@@ -84,7 +84,27 @@ const playlists = [
 ];
 
 const Playlist = () => {
+  const scrollLeft = () => {
+    const container = document.getElementById('playlist-carousel');
+    container?.scrollBy({ left: -320, behavior: 'smooth' });
+  };
+
+  const scrollRight = () => {
+    const container = document.getElementById('playlist-carousel');
+    container?.scrollBy({ left: 320, behavior: 'smooth' });
+  };
+
   return (
+    <>
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
 <div className="min-h-screen h-full bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 relative overflow-hidden">
         {/*elementos*/}
       <div className="absolute inset-0 opacity-10">
@@ -167,7 +187,47 @@ const Playlist = () => {
             </h3>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          {/* Mobile Carousel */}
+          <div className="lg:hidden relative">
+            {/* Left Arrow */}
+            <button 
+              onClick={scrollLeft}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-purple-600/80 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-purple-500/80 transition-all duration-300"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            
+            {/* Right Arrow */}
+            <button 
+              onClick={scrollRight}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-purple-600/80 backdrop-blur-sm text-white p-3 rounded-full shadow-lg hover:bg-purple-500/80 transition-all duration-300"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            <div id="playlist-carousel" className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-6 px-12 pb-4" style={{ width: 'max-content' }}>
+                {playlists.map((playlist, index) => (
+                  <div 
+                    key={playlist.id} 
+                    className="flex-shrink-0 w-80 transition-all duration-500"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    <PlaylistCard playlist={playlist} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Scroll indicator */}
+            <div className="flex justify-center mt-4 gap-2">
+              {playlists.map((_, index) => (
+                <div key={index} className="w-2 h-2 bg-purple-400/50 rounded-full"></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {playlists.map((playlist, index) => (
               <div 
                 key={playlist.id} 
@@ -232,6 +292,7 @@ const Playlist = () => {
   </div>
 </footer>
     </div>
+    </>
   );
 };
 
