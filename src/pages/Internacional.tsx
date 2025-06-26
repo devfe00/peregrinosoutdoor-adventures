@@ -619,7 +619,7 @@ const Internacional = () => {
   </div>
 </div>
       
-        {/*ação*/}
+        {/*acão*/}
         <section className="py-12 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
@@ -636,8 +636,6 @@ const Internacional = () => {
             </Link>
           </div>
         </section>
-
-        {/*footer */}
         <footer className="bg-indigo-800 text-white py-2 relative z-10">
           <div className="container mx-auto px-4 text-center">
             <p className="text-indigo-200 text-sm">

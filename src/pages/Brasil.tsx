@@ -73,7 +73,7 @@ const brasilDestinations = [
   }
 ];
 
-//partículas brasileiras animadas
+//partículas brasileira
 const BrazilianParticles = () => {
   const particles = [
 { icon: "🌴", delay: "0s", duration: "15s", left: "10%", size: "2rem" },
@@ -111,10 +111,7 @@ const BrazilianParticles = () => {
       </div>
     </div>
   );
-};
-
-// ===== COMPONENTE DESTINATIONCARD MODIFICADO COM SWIPE =====
-const DestinationCard = ({ destination, index }) => {
+};const DestinationCard = ({ destination, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -194,7 +191,7 @@ const DestinationCard = ({ destination, index }) => {
         {/*overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         
-        {/*setas - apenas no desktop */}
+        {/*setas -apenas desktop */}
         {!isMobile && (
           <>
             <button
@@ -277,7 +274,7 @@ const DestinationCard = ({ destination, index }) => {
           </div>
         </div>
         
-        {/*botão */}
+        {/*botao */}
         <button 
           onClick={handleExploreDestination}
           className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
@@ -486,7 +483,7 @@ const Brasil = () => {
       `}</style>
       
       <div className="min-h-screen h-full bg-gradient-to-b from-blue-50 to-indigo-50 relative">
-        {/* Botão de contato fixo */}
+        {/*botão contato fixo */}
         <button
           onClick={handleContactClick}
           className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 sm:p-4 hover:bg-white/30 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
@@ -500,9 +497,7 @@ const Brasil = () => {
 
         {/*partículas brasileiras*/}
         <BrazilianParticles />
-        
-        {/*header */}
-        <header className="bg-gradient-to-r from-green-600 to-green-700 text-white py-6 relative overflow-hidden">
+                <header className="bg-gradient-to-r from-green-600 to-green-700 text-white py-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-green-800/20"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="flex items-center justify-between">
@@ -533,14 +528,11 @@ const Brasil = () => {
             </p>
           </div>
         </section>
-
-        {/* ===== SEÇÃO DE DESTINOS MODIFICADA ===== */}
         <section className="py-16 relative z-10">
           <div className="container mx-auto px-6">
             <MobileCarousel destinations={brasilDestinations} />
           </div>
         </section>
-
 {/* em breve */}
 <div className="mt-16 mb-12 px-4 text-center">
   <div className="group">
@@ -556,7 +548,6 @@ const Brasil = () => {
   <div className="w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
   <div className="w-2.5 h-2.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
 </div>
-      
       <span className="text-green-800 font-semibold text-sm sm:text-base group-hover:text-green-900 transition-colors duration-300">
         Calma que tem mais vindo aí!<br />Enquanto isso, equipe seu rolê com nossos produtos.
       </span>
@@ -568,9 +559,7 @@ const Brasil = () => {
       </div>
     </a>
   </div>
-</div>
-
-        {/*acao */}
+</div>        {/*acao */}
         <section className="py-12 bg-gradient-to-r from-green-600 to-green-700 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
@@ -587,8 +576,6 @@ const Brasil = () => {
             </Link>
           </div>
         </section>
-
-        {/*footer */}
         <footer className="bg-green-800 text-white py-2 relative z-10">
           <div className="container mx-auto px-4 text-center">
             <p className="text-green-200 text-sm">

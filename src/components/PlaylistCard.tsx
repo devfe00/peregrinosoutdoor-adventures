@@ -28,7 +28,7 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-      {/* Header */}
+
       <div className={`bg-gradient-to-r ${playlist.color} p-6 text-white`}>
         <div className="flex items-center gap-3 mb-2 group">
           <Music className="w-8 h-8 group-hover:rotate-12 transition-transform duration-300" />
@@ -37,7 +37,7 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
         <p className="text-white/90">{playlist.description}</p>
       </div>
 
-      {/* Songs List */}
+      {/*lista*/}
       <div className="p-4">
         <div className="space-y-3">
           {playlist.songs.map((song, index) => (
@@ -71,16 +71,14 @@ const PlaylistCard = ({ playlist }: PlaylistCardProps) => {
             </div>
           ))}
         </div>
-
-        {/* Info sobre reprodução */}
         <div className="mt-6 border-t pt-4">
           <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
             <div className="flex items-center gap-2 mb-2">
               <Music className="w-5 h-5 text-purple-600 animate-pulse" />
-              <h4 className="font-semibold text-purple-800">Como ouvir:</h4>
+              <h4 className="font-semibold text-purple-800">Como escutar:</h4>
             </div>
             <p className="text-sm text-purple-700">
-              Clique em qualquer música para tocar aqui mesmo, ou no ícone de link para abrir no YouTube! 🎵
+              Clique em sua musíca favorita para abrir no YouTube. 
             </p>
           </div>
         </div>

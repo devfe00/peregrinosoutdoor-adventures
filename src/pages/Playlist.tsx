@@ -250,7 +250,7 @@ const Playlist = () => {
               <div className="absolute -inset-2 border-2 border-purple-400/50 rounded-full animate-ping"></div>
             </div>
           </div>
-          <h3 className="text-3xl font-bold mb-6">Sua Música, Sua Aventura</h3>
+          <h3 className="text-3xl font-bold mb-6">Sua Música, Sua Aventura.</h3>
           <p className="text-xl mb-8 text-purple-200 max-w-2xl mx-auto">
             Deixe que cada acorde embale sua jornada e transforme cada quilômetro 
             em uma experiência sonora única.
@@ -275,8 +275,6 @@ const Playlist = () => {
           </div>
         </div>
       </section>
-
-      {/*footer*/}
 <footer className="bg-gradient-to-r from-slate-900/80 to-purple-900/80 backdrop-blur-md text-white py-2 relative z-10">
   <div className="container mx-auto px-4 text-center">
     <div className="flex items-center justify-center gap-2 mb-2">
